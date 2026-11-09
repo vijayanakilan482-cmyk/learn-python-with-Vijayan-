@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Python with Vijayan</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #101827;
+    color: white;
+}
+
+header {
+    background: #17243a;
+    padding: 22px;
+    text-align: center;
+    border-bottom: 2px solid #354761;
+}
+
+header h2 {
+    color: #ffd43b;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #1d2b42;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd43b;
+}
+
+.hero {
+    text-align: center;
+    padding: 75px 20px;
+    background: linear-gradient(135deg, #182d50, #263e68);
+}
+
+.hero h1 {
+    font-size: 38px;
+    color: #ffd43b;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #d1d5db;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero button {
+    margin-top: 25px;
+    background: #ffd43b;
+    color: #101827;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.intro {
+    margin: 30px 8%;
+    padding: 35px;
+    text-align: center;
+    background: #1d2b42;
+    border: 1px solid #354761;
+    border-radius: 12px;
+}
+
+.intro h2 {
+    color: #ffd43b;
+    margin-bottom: 15px;
+}
+
+.intro p {
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.section {
+    padding: 40px 8%;
+}
+
+.section h2 {
+    color: #ffd43b;
+    margin-bottom: 20px;
+}
+
+.search {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #354761;
+    background: #1d2b42;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.search::placeholder {
+    color: #aaa;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.filters button {
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 1px solid #354761;
+    background: #1d2b42;
+    color: white;
+    cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: #ffd43b;
+    color: #101827;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 25px;
+    background: #1d2b42;
+    border: 1px solid #354761;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #ffd43b;
+}
+
+.card h3 {
+    color: #ffd43b;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.card span {
+    color: #7ee787;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.lesson {
+    display: none;
+    margin: 30px 8%;
+    padding: 35px;
+    background: #1d2b42;
+    border: 1px solid #ffd43b;
+    border-radius: 12px;
+    line-height: 1.8;
+}
+
+.lesson h2 {
+    color: #ffd43b;
+    margin-bottom: 20px;
+}
+
+.lesson h3 {
+    color: #7ee787;
+    margin: 22px 0 10px;
+}
+
+.lesson p {
+    color: #d1d5db;
+    margin-bottom: 12px;
+}
+
+.lesson pre {
+    background: #0b1220;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    color: #7ee787;
+    margin: 15px 0;
+}
+
+.lesson button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 7px;
+    background: #ffd43b;
+    color: #101827;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.empty {
+    color: #bbb;
+    padding: 20px;
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #17243a;
+    color: #bbb;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🐍 Learn Python with Vijayan</h2>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#courses">Lessons</a>
+</nav>
+
+<section class="hero" id="home">
+    <h1>Welcome to Python Learning Hub</h1>
+    <p>Learn Python from Beginner to Advanced.</p>
+    <p>Learn • Practice • Build • Grow</p>
+    <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">
+        Start Learning
+    </button>
+</section>
+
+<section class="intro" id="about">
+    <h2>👋 Meet the Creator</h2>
+    <p>
+        Hi, I am Vijayan, a 14-year-old boy chasing dreams.
+        I love programming, science and technology.
+    </p>
+    <p>
+        My goal is to become a Software Engineer.
+        This website is created to help everyone learn Python.
+    </p>
+    <p style="color:#ffd43b; margin-top:12px;">
+        🚀 Dream Big. Learn Every Day. Build Your Future.
+    </p>
+</section>
+
+<section class="section" id="courses">
+    <h2>📚 Python Learning Courses</h2>
+
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="🔍 Search Python lessons..."
+        oninput="showLessons()"
+    >
+
+    <div class="filters" id="filters"></div>
+
+    <div class="container" id="lessonCards"></div>
+    <p class="empty" id="empty">No lessons found.</p>
+</section>
+
+<section class="lesson" id="lessonPage">
+    <h2 id="lessonTitle"></h2>
+    <div id="lessonDescription"></div>
+    <button onclick="backToLessons()">⬅ Back to Lessons</button>
+</section>
+
+<footer>
+    <p>🐍 Learn Python with Vijayan</p>
+    <p>Learn • Practice • Grow | © 2026</p>
+</footer>
+
+<script>
+
+const lessons = [
+
+{
+title:"Introduction to Python",
+level:"Beginner",
+description:"Understand what Python is, its history, features and applications.",
+explanation:"Python is a high-level, general-purpose programming language. It is popular because its syntax is readable and beginner-friendly. It is used in web development, automation, data science and artificial intelligence.",
+example:'print("Hello World")',
+detail:"The print() function displays output on the screen."
+},
+
+{
+title:"Installing Python",
+level:"Beginner",
+description:"Learn how to install Python and set up your coding environment.",
+explanation:"To write and execute Python programs, you need a Python interpreter. You can download Python from python.org and use editors such as VS Code.",
+example:'print("Python is ready!")',
+detail:"Run this program to check that Python is working."
+},
+
+{
+title:"Python Syntax",
+level:"Beginner",
+description:"Understand Python rules, indentation and statements.",
+explanation:"Syntax means the rules used to write a programming language. Python uses indentation to organize code blocks. Incorrect indentation can cause errors.",
+example:'if True:\n    print("Correct indentation")',
+detail:"The spaces before print() show that it belongs inside the if block."
+},
+
+{
+title:"Comments",
+level:"Beginner",
+description:"Learn how to write notes inside Python programs.",
+explanation:"Comments are notes for programmers. Python ignores comments when executing code. A single-line comment starts with #.",
+example:'# This is a comment\nprint("Hello")',
+detail:"The first line is ignored by Python."
+},
+
+{
+title:"Variables",
+level:"Beginner",
+description:"Understand how to store information using variable names.",
+explanation:"A variable is a name that refers to a value. You can assign values using the = operator. Variable names should be meaningful.",
+example:'name = "Vijayan"\nage = 14\nprint(name)\nprint(age)',
+detail:"name stores text and age stores an integer."
+},
+
+{
+title:"Data Types",
+level:"Beginner",
+description:"Learn int, float, string and boolean data types.",
+explanation:"Data types describe the kind of values stored in Python. int stores whole numbers, float stores decimal numbers, str stores text and bool stores True or False.",
+example:'a = 10\nb = 5.5\nc = "Python"\nd = True\n\nprint(type(a))\nprint(type(b))',
+detail:"The type() function identifies the data type."
+},
+
+{
+title:"Type Conversion",
+level:"Beginner",
+description:"Convert values from one data type to another.",
+explanation:"Type conversion changes a value from one data type into another. Common functions are int(), float(), str() and bool().",
+example:'age = "14"\nnumber = int(age)\nprint(number + 1)',
+detail:"int() converts the string into an integer."
+},
+
+{
+title:"Input and Output",
+level:"Beginner",
+description:"Get information from users and display results.",
+explanation:"input() accepts information from the user. print() displays information. Input normally returns a string, so convert it when a number is needed.",
+example:'name = input("Enter your name: ")\nprint("Hello", name)',
+detail:"The program asks for a name and displays a greeting."
+},
+
+{
+title:"Arithmetic Operators",
+level:"Beginner",
+description:"Learn addition, subtraction, multiplication and division.",
+explanation:"Arithmetic operators perform mathematical calculations. Python supports +, -, *, /, //, %, and **.",
+example:'a = 10\nb = 3\n\nprint(a + b)\nprint(a * b)\nprint(a // b)\nprint(a % b)\nprint(a ** b)',
+detail:"// gives floor division, % gives remainder and ** calculates powers."
+},
+
+{
+title:"Comparison Operators",
+level:"Beginner",
+description:"Compare two values using comparison operators.",
+explanation:"Comparison operators compare values and produce True or False. Examples include ==, !=, >, <, >= and <=.",
+example:'a = 10\nb = 5\nprint(a > b)\nprint(a == b)',
+detail:"10 is greater than 5, so the first result is True."
+},
+
+{
+title:"Logical Operators",
+level:"Beginner",
+description:"Understand and, or and not.",
+explanation:"Logical operators combine or reverse conditions. and requires both conditions to be true, or requires at least one, and not reverses a boolean result.",
+example:'age = 14\nprint(age > 10 and age < 18)\nprint(not False)',
+detail:"The first expression checks two conditions together."
+},
+
+{
+title:"Assignment Operators",
+level:"Beginner",
+description:"Learn how to assign and update variable values.",
+explanation:"Assignment operators store values in variables. Operators such as +=, -=, *= and /= update an existing variable.",
+example:'score = 10\nscore += 5\nprint(score)',
+detail:"score += 5 is equivalent to score = score + 5."
+},
+
+{
+title:"Conditional Statements",
+level:"Beginner",
+description:"Learn if, elif and else to make decisions.",
+explanation:"Conditional statements allow a program to choose which code to execute depending on a condition.",
+example:'marks = 85\n\nif marks >= 90:\n    print("Excellent")\nelif marks >= 50:\n    print("Pass")\nelse:\n    print("Try again")',
+detail:"Python checks conditions from top to bottom."
+},
+
+{
+title:"Nested If",
+level:"Beginner",
+description:"Learn how to place one if statement inside another.",
+explanation:"A nested if is a conditional statement inside another conditional statement. It is useful when a decision depends on another decision.",
+example:'age = 14\nhas_id = True\n\nif age >= 13:\n    if has_id:\n        print("Both conditions passed")',
+detail:"The inner if runs only when the outer if is true."
+},
+
+{
+title:"While Loop",
+level:"Beginner",
+description:"Repeat code while a condition remains true.",
+explanation:"A while loop repeatedly executes a block of code as long as its condition is true. Make sure the condition can eventually become false.",
+example:'count = 1\n\nwhile count <= 5:\n    print(count)\n    count += 1',
+detail:"The count increases until it becomes greater than 5."
+},
+
+{
+title:"For Loop",
+level:"Beginner",
+description:"Repeat code for each item in a sequence.",
+explanation:"A for loop iterates over items in a sequence such as a list or string. It is commonly used when processing collections.",
+example:'for number in [1, 2, 3, 4]:\n    print(number)',
+detail:"The loop prints each number in the list."
+},
+
+{
+title:"Range Function",
+level:"Beginner",
+description:"Generate a sequence of numbers using range().",
+explanation:"range() produces a sequence of integers. It is often used with for loops. The ending value is excluded.",
+example:'for i in range(1, 6):\n    print(i)',
+detail:"This prints numbers from 1 through 5."
+},
+
+{
+title:"Break Statement",
+level:"Beginner",
+description:"Stop a loop before it finishes normally.",
+explanation:"break immediately exits the nearest enclosing loop.",
+example:'for i in range(1, 6):\n    if i == 3:\n        break\n    print(i)',
+detail:"The loop stops when i becomes 3."
+},
+
+{
+title:"Continue Statement",
+level:"Beginner",
+description:"Skip the current iteration of a loop.",
+explanation:"continue skips the remaining statements in the current iteration and moves to the next iteration.",
+example:'for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i)',
+detail:"The number 3 is skipped."
+},
+
+{
+title:"Pass Statement",
+level:"Beginner",
+description:"Use pass as a placeholder for future code.",
+explanation:"pass does nothing when executed. It is useful when Python requires a statement but you have not written the code yet.",
+example:'for i in range(3):\n    pass\n\nprint("Finished")',
+detail:"The loop runs without performing an action."
+},
+
+{
+title:"Strings",
+level:"Intermediate",
+description:"Learn how to create, access and work with text.",
+explanation:"A string is a sequence of characters enclosed in quotes. Strings support indexing, slicing and many useful methods.",
+example:'name = "Python"\nprint(name[0])\nprint(name[0:3])',
+detail:"Indexing gets one character. Slicing gets part of a string."
+},
+
+{
+title:"String Methods",
+level:"Intermediate",
+description:"Use built-in methods to manipulate strings.",
+explanation:"String methods help process text. Common methods include upper(), lower(), strip(), replace(), split() and find().",
+example:'text = "hello python"\nprint(text.upper())\nprint(text.replace("hello", "learn"))',
+detail:"upper() converts letters to uppercase."
+},
+
+{
+title:"Lists",
+level:"Intermediate",
+description:"Store multiple values in an ordered, changeable collection.",
+explanation:"A list stores multiple items in one variable. Lists are ordered, mutable and allow duplicate values.",
+example:'fruits = ["apple", "mango", "orange"]\nfruits.append("banana")\nprint(fruits)',
+detail:"append() adds an item to the end of the list."
+},
+
+{
+title:"List Methods",
+level:"Intermediate",
+description:"Learn append, insert, remove, pop, sort and more.",
+explanation:"List methods help add, delete and organize elements. Common methods include append(), insert(), remove(), pop(), sort() and reverse().",
+example:'numbers = [3, 1, 2]\nnumbers.sort()\nprint(numbers)',
+detail:"sort() arranges the list in ascending order."
+},
+
+{
+title:"Tuples",
+level:"Intermediate",
+description:"Understand ordered collections that cannot be changed.",
+explanation:"A tuple is an ordered collection. Unlike lists, tuples are immutable, meaning their items cannot be reassigned after creation.",
+example:'colors = ("blue", "red", "green")\nprint(colors[0])',
+detail:"The first item is accessed using index 0."
+},
+
+{
+title:"Dictionaries",
+level:"Intermediate",
+description:"Store information using key-value pairs.",
+explanation:"A dictionary stores data as key-value pairs. It is useful when each value has a meaningful label.",
+example:'student = {\n    "name": "Vijayan",\n    "age": 14\n}\nprint(student["name"])',
+detail:"The key name is used to access its value."
+},
+
+{
+title:"Dictionary Methods",
+level:"Intermediate",
+description:"Learn keys, values, items, update and get.",
+explanation:"Dictionary methods help access and modify dictionary data. keys() returns keys, values() returns values, and items() returns key-value pairs.",
+example:'student = {"name": "Vijayan"}\nstudent["age"] = 14\nprint(student.keys())\nprint(student.values())',
+detail:"You can add a new key-value pair by assigning it."
+},
+
+{
+title:"Nested Collections",
+level:"Intermediate",
+description:"Understand lists and dictionaries inside other collections.",
+explanation:"Nested collections contain another collection as an item or value. They are useful for representing structured information.",
+example:'students = [\n    {"name": "Vijayan", "age": 14},\n    {"name": "Arun", "age": 15}\n]\nprint(students[0]["name"])',
+detail:"The first dictionary's name value is accessed."
+},
+
+{
+title:"Functions",
+level:"Intermediate",
+description:"Create reusable blocks of code using def.",
+explanation:"A function is a reusable block of code that performs a task. Functions are defined using def and called using their name.",
+example:'def greet():\n    print("Hello!")\n\ngreet()',
+detail:"The function runs when greet() is called."
+},
+
+{
+title:"Function Arguments",
+level:"Intermediate",
+description:"Pass information into functions using arguments.",
+explanation:"Parameters are names in a function definition. Arguments are the actual values passed when calling the function.",
+example:'def greet(name):\n    print("Hello", name)\n\ngreet("Vijayan")',
+detail:"name receives the argument Vijayan."
+},
+
+{
+title:"Return Statement",
+level:"Intermediate",
+description:"Return a result from a function.",
+explanation:"return sends a value back to the code that called the function. It also ends the current function execution.",
+example:'def add(a, b):\n    return a + b\n\nresult = add(10, 5)\nprint(result)',
+detail:"The returned result is stored in result."
+},
+
+{
+title:"Lambda Functions",
+level:"Intermediate",
+description:"Write small anonymous functions using lambda.",
+explanation:"A lambda function is a small anonymous function written using the lambda keyword. It can contain a single expression.",
+example:'square = lambda x: x * x\nprint(square(5))',
+detail:"The lambda calculates the square of its input."
+},
+
+{
+title:"Recursive Functions",
+level:"Intermediate",
+description:"Understand functions that call themselves.",
+explanation:"A recursive function calls itself to solve a smaller version of a problem. It needs a base case to stop recursion.",
+example:'def countdown(n):\n    if n == 0:\n        print("Done")\n    else:\n        print(n)\n        countdown(n - 1)\n\ncountdown(3)',
+detail:"The base case stops the recursive calls."
+},
+
+{
+title:"Modules",
+level:"Intermediate",
+description:"Reuse Python code through modules and imports.",
+explanation:"A module is a Python file containing reusable code. The import statement allows you to use functions and other objects from modules.",
+example:'import math\nprint(math.sqrt(25))',
+detail:"math.sqrt() calculates a square root."
+},
+
+{
+title:"Math Module",
+level:"Intermediate",
+description:"Explore mathematical functions in the math module.",
+explanation:"The math module provides mathematical constants and functions, including pi, sqrt(), factorial(), floor(), ceil() and fabs().",
+example:'import math\nprint(math.pi)\nprint(math.sqrt(64))\nprint(math.factorial(5))',
+detail:"math.pi gives the value of pi."
+},
+
+{
+title:"Random Module",
+level:"Intermediate",
+description:"Generate random values and choose random items.",
+explanation:"The random module provides tools for random selections and numbers. Common functions include randint(), random(), choice(), uniform() and shuffle().",
+example:'import random\nprint(random.randint(1, 10))\nprint(random.choice(["red", "blue"]))',
+detail:"randint() generates a random integer within the given range."
+},
+
+{
+title:"Date and Time",
+level:"Intermediate",
+description:"Work with dates and times using datetime.",
+explanation:"The datetime module provides classes for working with dates and times. It can display the current date and time and perform date calculations.",
+example:'import datetime\nnow = datetime.datetime.now()\nprint(now)\nprint(now.date())',
+detail:"now() returns the current local date and time."
+},
+
+{
+title:"Exception Handling",
+level:"Advanced",
+description:"Handle errors using try, except, else and finally.",
+explanation:"Exception handling allows a program to respond to runtime errors without immediately stopping unexpectedly.",
+example:'try:\n    number = int("hello")\nexcept ValueError:\n    print("Invalid number")',
+detail:"The except block handles the conversion error."
+},
+
+{
+title:"File Handling",
+level:"Advanced",
+description:"Read and write files using Python.",
+explanation:"File handling allows programs to store and retrieve information from files. open() is used with modes such as r, w and a.",
+example:'with open("notes.txt", "w") as file:\n    file.write("Hello Python")',
+detail:"The w mode creates or replaces the file content."
+},
+
+{
+title:"Object-Oriented Programming",
+level:"Advanced",
+description:"Understand classes, objects, attributes and methods.",
+explanation:"Object-oriented programming organizes code around classes and objects. A class defines a structure, and an object is an instance of that class.",
+example:'class Student:\n    def greet(self):\n        print("Hello student")\n\ns = Student()\ns.greet()',
+detail:"Student is a class and s is an object."
+},
+
+{
+title:"Constructors",
+level:"Advanced",
+description:"Initialize objects using the __init__ method.",
+explanation:"The __init__ method runs when an object is created. It is commonly used to initialize object attributes.",
+example:'class Student:\n    def __init__(self, name):\n        self.name = name\n\ns = Student("Vijayan")\nprint(s.name)',
+detail:"The constructor stores the name in the object."
+},
+
+{
+title:"Inheritance",
+level:"Advanced",
+description:"Create new classes from existing classes.",
+explanation:"Inheritance allows one class to reuse and extend the attributes and methods of another class.",
+example:'class Animal:\n    def speak(self):\n        print("Sound")\n\nclass Dog(Animal):\n    pass\n\nd = Dog()\nd.speak()',
+detail:"Dog inherits the speak() method from Animal."
+},
+
+{
+title:"Polymorphism",
+level:"Advanced",
+description:"Use a common method name with different behaviors.",
+explanation:"Polymorphism allows different objects to respond to the same method call in their own ways.",
+example:'class Cat:\n    def speak(self):\n        print("Meow")\n\nclass Dog:\n    def speak(self):\n        print("Woof")\n\nfor animal in [Cat(), Dog()]:\n    animal.speak()',
+detail:"Each object has its own implementation of speak()."
+},
+
+{
+title:"Encapsulation",
+level:"Advanced",
+description:"Organize and control access to class data.",
+explanation:"Encapsulation groups data and methods inside a class. Python uses naming conventions and properties to manage access to attributes.",
+example:'class Student:\n    def __init__(self):\n        self.__marks = 95\n\n    def get_marks(self):\n        return self.__marks\n\ns = Student()\nprint(s.get_marks())',
+detail:"The double underscore name uses Python name mangling."
+},
+
+{
+title:"Decorators",
+level:"Advanced",
+description:"Modify or extend function behavior using decorators.",
+explanation:"A decorator is a function that takes another function and returns a wrapped function. Decorators are often written using @ syntax.",
+example:'def decorator(func):\n    def wrapper():\n        print("Before")\n        func()\n        print("After")\n    return wrapper\n\n@decorator\ndef hello():\n    print("Hello")\n\nhello()',
+detail:"The decorator adds behavior before and after hello()."
+},
+
+{
+title:"Generators",
+level:"Advanced",
+description:"Produce values one at a time using yield.",
+explanation:"Generators produce values lazily, one at a time. The yield keyword pauses a function and preserves its state for the next request.",
+example:'def numbers():\n    yield 1\n    yield 2\n    yield 3\n\nfor n in numbers():\n    print(n)',
+detail:"Each yield produces the next value."
+},
+
+{
+title:"List Comprehension",
+level:"Advanced",
+description:"Create lists using a compact expression.",
+explanation:"List comprehension creates a new list from an iterable, optionally applying an expression and a condition.",
+example:'squares = [x * x for x in range(1, 6)]\nprint(squares)',
+detail:"It creates a list containing the squares of numbers 1 to 5."
+},
+
+{
+title:"Virtual Environments",
+level:"Advanced",
+description:"Create isolated Python environments for projects.",
+explanation:"Virtual environments keep project dependencies separate. Python includes the venv module for creating them.",
+example:'python -m venv myenv',
+detail:"This command creates a virtual environment named myenv."
+},
+
+{
+title:"Working with JSON",
+level:"Advanced",
+description:"Store and exchange structured data using JSON.",
+explanation:"JSON is a text format for structured data. Python's json module can convert between Python objects and JSON strings.",
+example:'import json\nstudent = {"name": "Vijayan"}\ndata = json.dumps(student)\nprint(data)',
+detail:"dumps() converts a Python object into a JSON string."
+},
+
+{
+title:"Python Projects",
+level:"Projects",
+description:"Apply Python concepts by building practical programs.",
+explanation:"Projects help you combine programming concepts to solve real problems. Start with small programs and gradually build larger applications.",
+example:'tasks = []\ntasks.append("Learn Python")\ntasks.append("Build a project")\n\nfor task in tasks:\n    print(task)',
+detail:"This simple example stores and displays a list of tasks."
+}
+
+];
+
+const levels = ["All", "Beginner", "Intermediate", "Advanced", "Projects"];
+let currentLevel = "All";
+
+function createFilters() {
+    const filters = document.getElementById("filters");
+
+    filters.innerHTML = levels.map(level => `
+        <button class="${level === currentLevel ? 'active' : ''}"
+        onclick="selectLevel('${level}')">${level}</button>
+    `).join("");
+}
+
+function selectLevel(level) {
+    currentLevel = level;
+    createFilters();
+    showLessons();
+}
+
+function showLessons() {
+    const search = document.getElementById("search").value.toLowerCase();
+
+    const filtered = lessons.filter((lesson) => {
+        const matchesLevel = currentLevel === "All" ||
+                             lesson.level === currentLevel;
+
+        const matchesSearch =
+            lesson.title.toLowerCase().includes(search) ||
+            lesson.description.toLowerCase().includes(search);
+
+        return matchesLevel && matchesSearch;
+    });
+
+    const cards = document.getElementById("lessonCards");
+
+    cards.innerHTML = filtered.map(lesson => {
+        const index = lessons.indexOf(lesson);
+
+        return `
+            <div class="card" onclick="openLesson(${index})">
+                <h3>${lesson.title}</h3>
+                <p>${lesson.description}</p>
+                <span>${lesson.level} | Open Lesson →</span>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("empty").style.display =
+        filtered.length === 0 ? "block" : "none";
+}
+
+function openLesson(index) {
+    const lesson = lessons[index];
+
+    document.getElementById("lessonTitle").textContent = lesson.title;
+
+    document.getElementById("lessonDescription").innerHTML = `
+        <h3>About this lesson</h3>
+        <p>${lesson.description}</p>
+
+        <h3>Explanation</h3>
+        <p>${lesson.explanation}</p>
+
+        <h3>Python Code Example</h3>
+        <pre><code>${lesson.example.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>
+
+        <h3>Code Explanation</h3>
+        <p>${lesson.detail}</p>
+    `;
+
+    document.getElementById("lessonPage").style.display = "block";
+
+    document.getElementById("lessonPage").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function backToLessons() {
+    document.getElementById("lessonPage").style.display = "none";
+
+    document.getElementById("courses").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+createFilters();
+showLessons();
+
+</script>
+
+</body>
+</html>
